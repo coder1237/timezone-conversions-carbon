@@ -1,0 +1,10 @@
+
+$utc = \Carbon\Carbon::now();
+    $ist = \Carbon\Carbon::now('Asia/Kolkata');// UTC+5:30
+    $cst = \Carbon\Carbon::now('America/Chicago'); // UTC-6:00
+    $pst = \Carbon\Carbon::now('America/Los_angeles'); // UTC-8:00
+    $timestamp = $pst->format('Y-m-d 2:i:s'); // 2 am passed for condition.
+    $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'America/Los_angeles');
+    $date->setTimezone('America/Chicago'); // converted time from time of pst(America/Los_angeles) timezone to time of cst(America/Chicago)timezone
+    
+    dd($utc,$ist,$cst,$cst,$pst,$date);
